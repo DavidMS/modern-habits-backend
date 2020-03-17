@@ -1,9 +1,12 @@
 package com.dms.modernhabits.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Stats {
+public class Stats implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +18,14 @@ public class Stats {
     private Integer wisdom;
     private Integer charisma;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "habit_id", nullable = false)
+    @JoinColumn(name = "habit_id", nullable = true)
     private Habit habit;
 
     public Integer getId() {
