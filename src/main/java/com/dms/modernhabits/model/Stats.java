@@ -3,9 +3,10 @@ package com.dms.modernhabits.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Stats {
+public class Stats implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

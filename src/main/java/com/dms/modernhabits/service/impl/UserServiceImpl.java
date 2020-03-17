@@ -7,6 +7,8 @@ import com.dms.modernhabits.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -17,8 +19,8 @@ public class UserServiceImpl implements UserService {
     private StatsRepository statsRepository;
 
     @Override
-    public User getUser(int userId) {
-        return userRepository.getOne(userId);
+    public Optional<User> getUser(int userId) {
+        return userRepository.findById(userId);
     }
 
     @Override
@@ -34,7 +36,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
-        return userRepository.save(user);
+        var stats = user.getStats();
+        user.setStats(null);
+        var userInsert = userRepository.save(user);
+        stats.setUser(userInsert);
+        var statsInsert = statsRepository.save(stats);
+        user.setStats(statsInsert);
+        return user;
     }
 
     @Override
