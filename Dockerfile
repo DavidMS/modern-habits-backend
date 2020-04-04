@@ -5,7 +5,7 @@ COPY pom.xml /tmp
 COPY src /tmp
 WORKDIR /tmp/
 RUN mvn clean install
-COPY target .
+#COPY target .
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} /app.jar
-ENTRYPOINT ["java","-jar","modernhabits-0.0.1.jar"]
+ENTRYPOINT ["java","-jar","/target/modernhabits-0.0.1.jar"]
