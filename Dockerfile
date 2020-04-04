@@ -4,7 +4,7 @@ VOLUME /tmp
 COPY pom.xml /tmp
 COPY src /tmp
 WORKDIR /tmp/
-RUN mvn clean package spring-boot:repackage
+RUN mvn clean install
 COPY target .
 #ARG JAR_FILE=target/*.jar
 #COPY ${JAR_FILE} /app.jar
