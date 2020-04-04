@@ -10,7 +10,7 @@ steps:
     args: ['expose', 'deployment', 'habit-rpg-api', '--type=LoadBalancer', '--port 80', '--target-port 8080']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
-      - 'CLOUDSDK_CONTAINER_CLUSTER=dev'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=habit-rpg'
 options:
   machineType: 'N1_HIGHCPU_8'
 timeout: 660s
