@@ -7,7 +7,7 @@ steps:
       - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=habit-rpg'
   - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['expose', 'deployment', 'habit-rpg-api', '--type=LoadBalancer', '--port 80', '--target-port 8080']
+    args: ['expose', 'deployment', 'habit-rpg-api-3', '--type=LoadBalancer', '--port 80', '--target-port 8080']
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
       - 'CLOUDSDK_CONTAINER_CLUSTER=habit-rpg'
