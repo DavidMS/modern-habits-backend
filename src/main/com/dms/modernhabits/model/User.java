@@ -16,7 +16,7 @@ public class User implements Serializable {
     @OneToOne(fetch = FetchType.LAZY,
                 cascade = CascadeType.ALL,
     mappedBy = "user")
-    private Stats stats;
+    private com.dms.modernhabits.model.Stats stats;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
@@ -26,7 +26,7 @@ public class User implements Serializable {
     @JoinTable(name = "users_habits",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "habit_id") })
-    private List<Habit> habits = new ArrayList<>();
+    private List<com.dms.modernhabits.model.Habit> habits = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -44,19 +44,19 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public Stats getStats() {
+    public com.dms.modernhabits.model.Stats getStats() {
         return stats;
     }
 
-    public void setStats(Stats stats) {
+    public void setStats(com.dms.modernhabits.model.Stats stats) {
         this.stats = stats;
     }
 
-    public List<Habit> getHabits() {
+    public List<com.dms.modernhabits.model.Habit> getHabits() {
         return habits;
     }
 
-    public void setHabits(List<Habit> habits) {
+    public void setHabits(List<com.dms.modernhabits.model.Habit> habits) {
         this.habits = habits;
     }
 }

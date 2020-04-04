@@ -1,0 +1,19 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/habit-rpg-api:v1', '.']
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['create', 'deployment', 'habit-rpg-api', '--image=gcr.io/$PROJECT_ID/habit-rpg-api:v1']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=dev'
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['expose', 'deployment', 'habit-rpg-api', '--type=LoadBalancer', '--port 80', '--target-port 8080']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-b'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=dev'
+options:
+  machineType: 'N1_HIGHCPU_8'
+timeout: 660s
+tags: ['habit-rpg-api', 'api']
+images:
+  - 'gcr.io/$PROJECT_ID/habir-rpg:v1'
