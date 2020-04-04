@@ -10,12 +10,13 @@
 	</parent>
 	<groupId>com.dms</groupId>
 	<artifactId>modernhabits</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>modernhabits</name>
 	<description>Backend for modernhabits app</description>
 
 	<properties>
 		<java.version>11</java.version>
+		<start-class>com.dms.modernhabits.ModernhabitsApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -56,10 +57,14 @@
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.dms.modernhabits.ModernhabitsApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
